@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;700&family=Outfit:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  
+  
+  @font-face {
+        font-family: "azonix";
+        src: url('/fonts/Azonix.otf');
+        font-display: swap;
+  }
+
+ 
+}
+
+@layer components {
+
+  .selected{
+        
+        
+    display: inline-block;
+    padding-bottom:4px;
+    background-image: linear-gradient(#6C63FF, #6C63FF); /*ff0032*/
+    background-position: 0 78%; /*OR bottom left */
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    transition:
+        background-size 0.3s,
+        background-position 0s 0.3s; /*change after the size immediately*/
+  }
+  .selected-dis{
+    background-image: linear-gradient(#c4c4c4, #c4c4c4);
+  }
+
+.selected:hover {
+    color : #6C63FF;
+    /*text-decoration-line: underline;
+    text-underline-offset: 8px; 
+    text-decoration-thickness: 15%;   */    
+    background-position: 100% 78%; /*OR bottom right*/
+    background-size: 100% 3px;
+  }  
+.selected-dis:hover {
+    color : #c4c4c4;
+  }
+}
+
+@layer utilities {
+
+  .clip-button {
+    clip-path: polygon(0% 0px,0px 0%,calc(100% - 8px) 0%,100% 8px,100% 100%,100% 100%,8px 100%,0 calc(100% - 8px));
+
+  }
+  .popIn{
+    transition: opacity 328ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 218ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+
+  .butEffect {
+    width: 112px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    transition: ease-out 0.3s ;
+    outline: none;
+    border: 3px solid #42FBF2;
+    position: relative;
+    z-index: 1;
+  }
+  .butEffect:hover {
+    border: 0.5px solid #42FBF2;
+  }
+  .butEffect:before{
+    transition: 0.5s all ease ;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    left: 50%;
+    opacity: 0;
+    content: "";
+    background-color: #42FBF2;
+  }
+  .butEffect:hover:before{
+    opacity: 1;
+    right: 0;
+    left: 0;
+    transition: 0.5s all ease ;
+    z-index: -1;
+  }
+
+  .step-item{
+    @apply relative flex flex-col justify-center items-start max-w-sm mx-auto ;
+}
+.step-item:not(:last-child):after {
+    @apply content-[""] bg-slate-200 absolute h-[calc(100%-2.45rem)] w-0.5 top-12 left-[38px] mt-2;
+}
+
+.step{
+    @apply w-7 h-7 flex items-center justify-center rounded-full bg-slate-700 relative z-10 font-semibold mr-4 transition-colors;
+}
+.active .step{
+    @apply bg-violet ;
+}
+.complete .step{
+    @apply bg-green-600 ;
+}
+
+.step-parag{
+    @apply pl-14  py-4;
+}
+
+.complete:not(:last-child):after {
+    @apply bg-green-600 transition-colors;
+}
+}

@@ -1,0 +1,32 @@
+
+.step-item{
+    @apply relative flex flex-col justify-center items-start max-w-sm mx-auto ;
+}
+.step-item:not(:last-child):after {
+    @apply content-[""] bg-slate-200 absolute h-[calc(100%-2.45rem)] w-0.5 top-12 left-[38px] mt-2;
+}
+
+.step{
+    @apply w-7 h-7 flex items-center justify-center rounded-full bg-slate-700 relative z-10 font-semibold mr-4 transition-colors;
+}
+.active .step{
+    @apply bg-violet ;
+}
+.complete .step{
+    @apply bg-green-600 ;
+}
+
+.step-parag{
+    @apply pl-14  py-4;
+}
+
+.complete:not(:last-child):after {
+    @apply bg-green-600 transition-colors;
+}
+
+/*
+.step-item:not(:last-child) .step-parag::before {
+    @apply content-[""] bg-slate-200 absolute h-[calc(100%-2.45rem)] w-0.5 top-12 left-[38px] mt-2;
+}
+
+*/
